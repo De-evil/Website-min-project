@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown</title>
+</head>
+<body>
+  <div id="countdown"></div>
+ <script> 
+ 
+const countdown = (num, callback) => {
+  const countdownElement = document.getElementById('countdown');
+  countdownElement.textContent = num;
+  const innerCountdown = (num) => {
+    setTimeout(() => {
+      countdownElement.textContent = num;
+
+      if (num > 1) {
+        innerCountdown(num - 1);
+      } else {
+        callback();
+      }
+    }, 1000);
+  };
+
+  innerCountdown(num);
+};
+
+countdown(10, () => {
+  setTimeout(() => {
+    const countdownElement = document.getElementById('countdown');
+    countdownElement.textContent = "Happy Independence Day";
+  }, 1000);
+});
+</script>
+</body>
+</html>
